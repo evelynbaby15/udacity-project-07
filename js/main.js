@@ -38,6 +38,7 @@ fillNeighborhoodsHTML = (neighborhoods = self.neighborhoods) => {
     option.value = neighborhood;
     select.append(option);
   });
+  select.tabIndex = 2;
 }
 
 /**
@@ -66,6 +67,7 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
     option.value = cuisine;
     select.append(option);
   });
+  select.tabIndex = 2;
 }
 
 /**
@@ -78,7 +80,8 @@ initMap = () => {
         scrollWheelZoom: false
       });
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
-    mapboxToken: 'pk.eyJ1IjoiZXZlbHluLWZlbmciLCJhIjoiY2pycnI0N292MjIyODQzcDkyYXEyN3FseiJ9.toSqJSCwZq8C3BdDDPMlCA',
+    mapboxToken: 'pk.eyJ1IjoiZXZlbHluLWZlbmciLCJhIjoiY2pydmcwZDkwMDFtMzQ0bWRlaGY0cDh3dCJ9.lfnkBBoecJ54rOdrTb4A4A',
+    // mapboxToken: '',
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
       '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -145,9 +148,10 @@ resetRestaurants = (restaurants) => {
  * Create all restaurants HTML and add them to the webpage.
  */
 fillRestaurantsHTML = (restaurants = self.restaurants) => {
+  let tab_index = 3;
   const ul = document.getElementById('restaurants-list');
   restaurants.forEach(restaurant => {
-    ul.append(createRestaurantHTML(restaurant));
+    ul.append(createRestaurantHTML(restaurant, tab_index++));
   });
   addMarkersToMap();
 }
@@ -155,7 +159,7 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
 /**
  * Create restaurant HTML.
  */
-createRestaurantHTML = (restaurant) => {
+createRestaurantHTML = (restaurant, tab_index) => {
   const li = document.createElement('li');
 
   const image = document.createElement('img');
@@ -165,6 +169,7 @@ createRestaurantHTML = (restaurant) => {
 
   const name = document.createElement('h1');
   name.innerHTML = restaurant.name;
+  name.tabIndex = tab_index;
   li.append(name);
 
   const neighborhood = document.createElement('p');
@@ -178,6 +183,7 @@ createRestaurantHTML = (restaurant) => {
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
+  more.tabIndex = tab_index++;
   li.append(more)
 
   return li
