@@ -3,7 +3,14 @@ var urlsToCache = [
     '.',
     '/index.html',
     '/css/styles.css',
-    '/restaurant.html'
+    '/restaurant.html',
+    '/js/main.js',
+    '/js/dbhelper.js',
+    '/js/restaurant_info.js',
+    '/data/restaurants.json',
+    '/img/1.jpg',
+    '/img/10.jpg',
+    '/img/2.jpg'
 ];
 self.addEventListener('install', function (event) {
     event.waitUntil(

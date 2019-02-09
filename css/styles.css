@@ -210,7 +210,7 @@ nav h1 a {
 .inside #footer {
   bottom: 0;
   position: absolute;
-  width: 50%;
+  width: 45%;
 }
 #restaurant-name {
   color: #f18200;
@@ -281,13 +281,22 @@ nav h1 a {
 
 /* ====================== Responsive testing ====================== */
 /* max: 400px */
-@media screen and (max-width: 412px) {
-  #maincontent {
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center; */
+@media screen and (max-width: 420px) {
+  .inside #maincontent {
+    background-color: #fff;
   }
-  #restaurants-list li {
+  .inside #map-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 5%;
+    width: 100%;
+    max-height: 400px;
+  }
+
+  .inside #restaurants-list li {
     /* width: 100%; */
   }
   .filter-options {
@@ -296,25 +305,37 @@ nav h1 a {
 
 
   /* inside */
-  .inside #map-container {
-    /* display: block; */
-    width: 100%;
+  .inside h2 {
+    background-color: #fff;
   }
-  #restaurant-container {
+  .inside #restaurant-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    margin: 300px 0 0 0;
+    margin: 400px 0 0 0;
     position: relative;
     z-index: 1;
+    /* padding: 0; */
     background-color: #fff;
   }
   .inside #reviews-container {
     width: 100%;
     margin: 0;
-    padding: 0;
+    /* padding: 0 0 80px 0; */
+    background-color: #fff;
+    z-index: 2;
+    position: relative;
   }
   .inside #footer {
     width: 100%;
+    z-index: 3;
   }
+  .inside #reviews-list li {
+    max-width: 80%;
+    margin: 0;
+}
+
 
   #breadcrumb {
     width: calc(100% - 80px);
@@ -323,13 +344,27 @@ nav h1 a {
 
 @media screen and (min-width: 768px) {
   .feature-work img {
-      width: 230px;
+    width: 230px;
   }
+  .inside #reviews-list li {
+    max-width: 70%;
+
+  }
+  .inside #footer {
+    max-width: 43%;
+  }
+  
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 999px) {
   .container {
       max-width: 980px;
       margin: 0 auto;
+  }
+  #reviews-list li {
+    width: calc(100% - 100px);
+  }
+  .inside #footer {
+    width: calc(100% - 100px);
   }
 }
