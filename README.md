@@ -7,9 +7,9 @@ This project is clone from [Udacity](https://github.com/udacity/mws-restaurant-s
 
 
 ### How to run this project?
-1. I use http-server to run this project. You can install this by the following command in terminal:
+1. I use [http-server](https://www.npmjs.com/package/http-server) to run this project. You can install this by the following command in terminal:
 ```
-    npm install http-server
+    npm install http-server -g
 ```
 
 After install finished, run 
@@ -19,6 +19,7 @@ After install finished, run
 ```
 
 Default service port is 8080.
+Visit http://localhost:8080 to view your server.
 
 Or you can use python like following instructions:
 1. In this folder, start up a simple HTTP server to serve up the site files on your local computer. Python has some simple tools to do this, and you don't even need to know Python. For most people, it's already installed on your computer.
