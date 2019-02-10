@@ -83,9 +83,11 @@ fetchRestaurantFromURL = (callback) => {
 fillRestaurantHTML = (restaurant = self.restaurant) => {
   const name = document.getElementById('restaurant-name');
   name.innerHTML = restaurant.name;
+  name.tabIndex = 3;
 
   const address = document.getElementById('restaurant-address');
   address.innerHTML = restaurant.address;
+  address.tabIndex = 5;
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
@@ -93,6 +95,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
+  cuisine.tabIndex = 4;
 
   // fill operating hours
   if (restaurant.operating_hours) {
@@ -120,15 +123,18 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
 
     hours.appendChild(row);
   }
+  hours.tabIndex = 6;
 }
 
 /**
  * Create all reviews HTML and add them to the webpage.
  */
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
+  let tab_index = 7;
   const container = document.getElementById('reviews-container');
   const title = document.createElement('h2');
   title.innerHTML = 'Reviews';
+  title.tabIndex = tab_index++;
   container.appendChild(title);
 
   if (!reviews) {
@@ -139,7 +145,7 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   }
   const ul = document.getElementById('reviews-list');
   reviews.forEach(review => {
-    ul.appendChild(createReviewHTML(review));
+    ul.appendChild(createReviewHTML(review, tab_index++));
   });
   container.appendChild(ul);
 }
@@ -147,22 +153,34 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
 /**
  * Create review HTML and add it to the webpage.
  */
-createReviewHTML = (review) => {
+createReviewHTML = (review, tab_index) => {
   const li = document.createElement('li');
+  li.className = "rw-li";
   const name = document.createElement('p');
   name.innerHTML = review.name;
-  li.appendChild(name);
+  name.className = "rw-name";
+  // li.appendChild(name);
 
   const date = document.createElement('p');
   date.innerHTML = review.date;
-  li.appendChild(date);
+  date.className = "rw-date";
+  // li.appendChild(date);
+
+  const rwHeader = document.createElement('div');
+  rwHeader.className = "rw-header";
+  rwHeader.appendChild(name);
+  rwHeader.appendChild(date);
+  rwHeader.tabIndex = tab_index;
+  li.appendChild(rwHeader);
 
   const rating = document.createElement('p');
   rating.innerHTML = `Rating: ${review.rating}`;
+  rating.className = "rw-rating";
   li.appendChild(rating);
 
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;
+  comments.className = "rw-comments";
   li.appendChild(comments);
 
   return li;

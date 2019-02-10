@@ -137,7 +137,6 @@ nav h1 a {
   padding: 30px 15px 60px;
   text-align: center;
   display: flex;
-  /* flex-wrap: wrap; */
   flex-direction: column;
   align-items: center;
 }
@@ -151,6 +150,7 @@ nav h1 a {
   text-align: left;
   width: 80%;
   max-width: 450px;
+  
 }
 #restaurants-list .restaurant-img {
   background-color: #ccc;
@@ -245,7 +245,7 @@ nav h1 a {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
   padding: 140px 40px 30px;
-  width: 50%;
+  width: 45%;
 }
 #reviews-container {
   padding: 30px 40px 80px;
@@ -268,36 +268,36 @@ nav h1 a {
   list-style-type: none;
   margin: 0 0 30px;
   overflow: hidden;
-  padding: 0 20px 20px;
+  /* padding: 0 20px 20px; */
   position: relative;
-  width: 85%;
+  width: 92%;
 }
 #reviews-list li p {
-  margin: 0 0 10px;
+  /* margin: 10px 0 0 15px; */
 }
 #restaurant-hours td {
   color: #666;
 }
 
-/* ====================== Responsive testing ====================== */
-/* max: 400px */
+/* ====================== Responsive style ====================== */
+/* max: 420px */
 @media screen and (max-width: 420px) {
   .inside #maincontent {
     background-color: #fff;
-  }
-  .inside #map-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
+    justify-content: center;
+  }
+  .inside #map-container {
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
     position: fixed;
     top: 0;
-    left: 5%;
+    left: 0%;
     width: 100%;
     max-height: 400px;
-  }
-
-  .inside #restaurants-list li {
-    /* width: 100%; */
   }
   .filter-options {
     height: 50%;
@@ -305,35 +305,27 @@ nav h1 a {
 
 
   /* inside */
-  .inside h2 {
-    background-color: #fff;
-  }
   .inside #restaurant-container {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; */
     width: 100%;
     margin: 400px 0 0 0;
-    position: relative;
     z-index: 1;
-    /* padding: 0; */
     background-color: #fff;
   }
   .inside #reviews-container {
     width: 100%;
     margin: 0;
-    /* padding: 0 0 80px 0; */
-    background-color: #fff;
+    background-color: #f3f3f3;
     z-index: 2;
-    position: relative;
   }
   .inside #footer {
     width: 100%;
     z-index: 3;
   }
   .inside #reviews-list li {
-    max-width: 80%;
-    margin: 0;
+    margin: 0 0 15px 0;
 }
 
 
@@ -347,8 +339,6 @@ nav h1 a {
     width: 230px;
   }
   .inside #reviews-list li {
-    max-width: 70%;
-
   }
   .inside #footer {
     max-width: 43%;
@@ -364,7 +354,40 @@ nav h1 a {
   #reviews-list li {
     width: calc(100% - 100px);
   }
-  .inside #footer {
-    width: calc(100% - 100px);
-  }
+  
+}
+
+
+/* ====================== Review p style ====================== */
+.rw-li {
+  border-radius: 20px 0;
+}
+.rw-header {
+  border: 1px solid;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 20px 0 0 0;
+  background: #333;
+}
+.rw-name {
+  color: #fff;
+  padding: 4px 0 0 15px;
+  font-size: 1.2em;
+}
+.rw-date {
+  color : rgb(168, 168, 166);
+  padding: 4px 12px;
+}
+.rw-rating {
+  color: #fff;
+  background-color: #ffa500;
+  margin: 10px 0 0 10px;
+  padding: 5px;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: .75em;
+  border-radius: 4px;
+}
+.rw-comments {
+  padding: 0 15px;
 }

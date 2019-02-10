@@ -1,3 +1,4 @@
+'use strict';
 var CACHE_NAME = 'static-cache';
 var urlsToCache = [
     '.',
@@ -21,6 +22,7 @@ self.addEventListener('install', function (event) {
     );
 });
 self.addEventListener('fetch', function (event) {
+    console.log("fetch url2:", event.request.url);
     event.respondWith(
         caches.match(event.request)
             .then(function (response) {
@@ -34,8 +36,10 @@ function fetchAndCache(url) {
         .then(function (response) {
             // Check if we received a valid response
             if (!response.ok) {
+                console.log('Request to url failed', url['url'])
                 throw Error(response.statusText);
             }
+
             return caches.open(CACHE_NAME)
                 .then(function (cache) {
                     cache.put(url, response.clone());
